@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookshelf-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bookshelf-web
+  template:
+    metadata:
+      labels:
+        app: bookshelf-web
+    spec:
+      containers:
+        - name: web
+          image: ictinfr/bookshelf-web:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: db
+            - name: POSTGRES_DB
+              value: bookshelf
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: bookshelf-db-secret
+                  key: POSTGRES_PASSWORD
