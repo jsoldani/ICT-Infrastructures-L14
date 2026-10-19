@@ -475,34 +475,3 @@ To remove the local cluster entirely:
 ```bash
 minikube delete
 ```
-
-## 12. Questions and deliverables
-
-Submit your Kubernetes manifests, a short README explaining how to reproduce the deployment, and answers to these questions:
-
-1. What is the difference between a Pod and a Deployment?
-2. Why does BookShelf use a Service to connect to PostgreSQL instead of a Pod IP?
-3. Which labels connect each Service to its target Pods?
-4. What happens when you delete a web Pod while the Deployment requests two or four replicas?
-5. What does the PVC preserve, and what does it **not** guarantee?
-6. Why does scaling the web Deployment not automatically scale the database?
-7. Why must the web image be loaded into Minikube for this exercise?
-8. What does a rolling update do, and what does a rollback not undo?
-9. What would you change before using this deployment in production?
-
-Include evidence that demonstrates:
-
-- The web application is accessible.
-- The web Deployment has the requested replica count.
-- The database PVC is bound.
-- A web Pod is replaced after deletion.
-- Data remains after database Pod replacement.
-- An image update succeeds; try a rollback as well.
-
-## Further reading
-
-- [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-- [Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/)
-- [Persistent Volumes and Claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-- [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
-- [Minikube documentation](https://minikube.sigs.k8s.io/docs/)
